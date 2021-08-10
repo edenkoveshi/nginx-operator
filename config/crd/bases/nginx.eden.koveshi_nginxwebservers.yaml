@@ -1,0 +1,77 @@
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.6.1
+  creationTimestamp: null
+  name: nginxwebservers.nginx.eden.koveshi
+spec:
+  group: nginx.eden.koveshi
+  names:
+    kind: NGINXWebServer
+    listKind: NGINXWebServerList
+    plural: nginxwebservers
+    singular: nginxwebserver
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: NGINXWebServer is the Schema for the nginxwebservers API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: NGINXWebServerSpec defines the desired state of NGINXWebServer
+            properties:
+              diskSize:
+                format: int32
+                type: integer
+              image:
+                type: string
+              replicas:
+                description: Foo is an example field of NGINXWebServer. Edit nginxwebserver_types.go
+                  to remove/update
+                format: int32
+                type: integer
+            required:
+            - replicas
+            type: object
+          status:
+            description: NGINXWebServerStatus defines the observed state of NGINXWebServer
+            properties:
+              Image:
+                type: string
+              replicas:
+                description: 'INSERT ADDITIONAL STATUS FIELD - define observed state
+                  of cluster Important: Run "make" to regenerate code after modifying
+                  this file'
+                items:
+                  type: string
+                type: array
+            required:
+            - replicas
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []
