@@ -1,0 +1,7 @@
+apiVersion: nginx.eden.koveshi/v1alpha1
+kind: NGINXWebServer
+metadata:
+  name: nginxwebserver-sample
+spec:
+  # Add fields here
+  foo: bar
